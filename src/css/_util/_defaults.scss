@@ -1,0 +1,27 @@
+*,
+*::before,
+*::after {
+	// Opacity
+	--ds-bg-opacity: 1;
+	--ds-text-opacity: 1;
+	--ds-border-opacity: 1;
+	--ds-shadow-opacity: 0.15;
+}
+
+@for $i from 1 through 20 {
+	$class: $i * 5;
+	$val: calc($class / 100);
+
+	.bg-opacity-#{$class} {
+		--ds-bg-opacity: #{$val};
+	}
+	.text-opacity-#{$class} {
+		--ds-text-opacity: #{$val};
+	}
+	.border-opacity-#{$class} {
+		--ds-border-opacity: #{$val};
+	}
+	.shadow-opacity-#{$class} {
+		--ds-border-opacity: #{$val};
+	}
+}

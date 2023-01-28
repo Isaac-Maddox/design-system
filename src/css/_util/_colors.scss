@@ -1,0 +1,122 @@
+@function color($name, $shade) {
+	@return map-get(map-get($colors, $name), $shade);
+}
+
+$colorsList: red, orange, yellow, green, blue, indigo, purple, slate, gray;
+
+$colors: (
+	red: (
+		100: #e36858,
+		200: #e15d4c,
+		300: #df5240,
+		400: #dc422e,
+		500: #d72710,
+		600: #bc220e,
+		700: #ac1f0d,
+		800: #a11d0c,
+		900: #961b0b,
+	),
+	orange: (
+		100: #f1894a,
+		200: #f0813d,
+		300: #ef7a31,
+		400: #ed6e1f,
+		500: #ec620d,
+		600: #da5b0c,
+		700: #c9530b,
+		800: #bd4e0a,
+		900: #b1490a,
+	),
+	yellow: (
+		100: #fec46e,
+		200: #fec165,
+		300: #febd5b,
+		400: #feb74c,
+		500: #feb13e,
+		600: #eba439,
+		700: #d89635,
+		800: #cb8e32,
+		900: #be852e,
+	),
+	green: (
+		100: #69c297,
+		200: #5fbe91,
+		300: #55ba8a,
+		400: #46b47f,
+		500: #37ae75,
+		600: #33a16c,
+		700: #2f9463,
+		800: #2c8b5e,
+		900: #298258,
+	),
+	blue: (
+		100: #7143f1,
+		200: #6836f0,
+		300: #5a23ee,
+		400: #4c11ed,
+		500: #4204ec,
+		600: #3f04e0,
+		700: #3a03ce,
+		800: #3503bd,
+		900: #3103b1,
+	),
+	indigo: (
+		100: #7840a1,
+		200: #6f339b,
+		300: #612092,
+		400: #540d88,
+		500: #4b0082,
+		600: #47007b,
+		700: #420072,
+		800: #3c0068,
+		900: #380061,
+	),
+	purple: (
+		100: #b858f4,
+		200: #b34df3,
+		300: #ac3cf2,
+		400: #a52bf1,
+		500: #a020f0,
+		600: #981ee4,
+		700: #8c1cd2,
+		800: #801ac0,
+		900: #7818b4,
+	),
+	slate: (
+		100: #9ea9b4,
+		200: #97a3af,
+		300: #8d9aa8,
+		400: #8492a0,
+		500: #7d8c9b,
+		600: #778593,
+		700: #6d7a88,
+		800: #64707c,
+		900: #5e6974,
+	),
+	gray: (
+		100: #ebebeb,
+		200: #dddddd,
+		300: #c3c3c3,
+		400: #bebebe,
+		500: #bbbbbb,
+		600: #b2b2b2,
+		700: #a4a4a4,
+		800: #7a7a7a,
+		900: #383838,
+	),
+);
+
+@each $color in $colorsList {
+	@for $i from 1 through 9 {
+		$clr: map-get(map-get($colors, $color), ($i * 100));
+		.bg-#{$color}-#{$i * 100} {
+			background-color: rgba($clr, var(--ds-bg-opacity));
+		}
+		.text-#{$color}-#{$i * 100} {
+			color: rgba($clr, var(--ds-text-opacity));
+		}
+		.border-#{$color}-#{$i * 100} {
+			border-color: rgba($clr, var(--ds-border-opacity));
+		}
+	}
+}
